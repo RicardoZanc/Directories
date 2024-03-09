@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WebApplication1.Models;
+using WebApplication1.Repositories;
 
 namespace WebApplication1.Controllers
 {
@@ -8,6 +9,12 @@ namespace WebApplication1.Controllers
     [ApiController]
     public class DirectoryController : ControllerBase
     {
+        private readonly DirectoryRepository directoryRepository;
+
+        public DirectoryController() { 
+            directoryRepository = new DirectoryRepository();
+        }
+
         [HttpGet]
         public ActionResult Get()
         {
@@ -17,7 +24,7 @@ namespace WebApplication1.Controllers
         [HttpPost]
         public ActionResult<DirectoryModel> Add([FromBody] DirectoryModel directoryModel)
         {
-            Directory.CreateDirectory($"C:\\Users\\ricar\\OneDrive\\Documentos\\Estudo\\C#\\WebApplication1\\_Directories\\{directoryModel.Name}");
+            directoryRepository.AddDirectory(directoryModel);
             return Ok(directoryModel);
         }
     }
