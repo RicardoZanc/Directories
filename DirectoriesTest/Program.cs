@@ -6,16 +6,13 @@ namespace DirectoriesTest
     {
         static void Main(string[] args)
         {
-            string currDirectory = "C:\\Users\\ricar\\OneDrive\\Documentos\\Estudo\\C#\\WebApplication1\\_Directories";
-
-            string[] direcs = Directory.GetDirectories(currDirectory);
+            string currDirectory = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), @"..\..\..\..\_Directories"));
 
 
 
-            foreach (string d in direcs)
-            {
-                Console.WriteLine(d.Remove(0, d.LastIndexOf("\\")+1));
-            }
+            Console.WriteLine(
+                    currDirectory                
+                );
 
 
         }

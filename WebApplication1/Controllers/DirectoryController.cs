@@ -27,5 +27,10 @@ namespace WebApplication1.Controllers
             directoryRepository.AddDirectory(directoryModel);
             return Ok(directoryModel);
         }
+
+        [HttpGet]
+        public ActionResult<string> tst() { 
+            return Ok(directoryRepository.GetDirectories());
+        }
     }
 }
