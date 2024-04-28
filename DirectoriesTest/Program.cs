@@ -8,11 +8,13 @@ namespace DirectoriesTest
         {
             string currDirectory = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), @"..\..\..\..\_Directories"));
 
+            string[] dirs = Directory.GetDirectories(currDirectory);
 
-
-            Console.WriteLine(
-                    currDirectory                
-                );
+            foreach (string dir in dirs)
+            {
+                string dirTreated = dir.Remove(0, dir.LastIndexOf(@"\")+1);
+                Console.WriteLine(dirTreated);
+            }
 
 
         }

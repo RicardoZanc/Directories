@@ -10,15 +10,18 @@ namespace WebApplication1.Controllers
     public class DirectoryController : ControllerBase
     {
         private readonly DirectoryRepository directoryRepository;
+        private readonly ILogger<DirectoryController> logger;
 
-        public DirectoryController() { 
+        public DirectoryController(ILogger<DirectoryController> logger) {
+            this.logger = logger;
             directoryRepository = new DirectoryRepository();
         }
 
         [HttpGet]
-        public ActionResult Get()
+        public ActionResult<string[]> Get()
         {
-            return Ok();
+            string[] directories = directoryRepository.GetDirectories(); 
+            return Ok(directories);
         }
 
         [HttpPost]
@@ -28,9 +31,9 @@ namespace WebApplication1.Controllers
             return Ok(directoryModel);
         }
 
-        [HttpGet]
-        public ActionResult<string> tst() { 
-            return Ok(directoryRepository.GetDirectories());
-        }
+        //[HttpGet]
+        //public ActionResult<string> tst() { 
+        //    return Ok(directoryRepository.GetDirectories());
+        //}
     }
 }
