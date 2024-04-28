@@ -1,8 +1,7 @@
 ﻿namespace WebApplication1.Models
 {
-    public class DirectoryModel
+    public class DirectoryModel : ArchiveModel
     {
-        public string Name { get; set; }
-        public string AbsolutePath {  get; set; } 
+        public static ArchiveType ArchiveType = ArchiveType.Folder;
     }
 }

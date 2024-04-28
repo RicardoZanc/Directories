@@ -10,10 +10,16 @@ namespace DirectoriesTest
 
             string[] dirs = Directory.GetDirectories(currDirectory);
 
-            foreach (string dir in dirs)
+            //foreach (string dir in dirs)
+            //{
+            //    //string dirTreated = dir.Remove(0, dir.LastIndexOf(@"\")+1);
+            //    Console.WriteLine(dir);
+            //}
+            string[] files = Directory.GetFiles(currDirectory);
+
+            foreach (string file in files)
             {
-                string dirTreated = dir.Remove(0, dir.LastIndexOf(@"\")+1);
-                Console.WriteLine(dirTreated);
+                Console.WriteLine(file);
             }
 
 
