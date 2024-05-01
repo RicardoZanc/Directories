@@ -2,6 +2,6 @@
 {
     public class DirectoryModel : ArchiveModel
     {
-        public static ArchiveType ArchiveType = ArchiveType.Folder;
+        public _ArchiveType ArchiveType = _ArchiveType.Folder;
     }
 }

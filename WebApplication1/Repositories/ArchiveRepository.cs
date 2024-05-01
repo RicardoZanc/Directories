@@ -2,14 +2,26 @@
 
 namespace WebApplication1.Repositories
 {
-    public class DirectoryRepository
+    public class ArchiveRepository
     {
         string currDirectory = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), @"..\_Directories"));
 
-        public DirectoryModel AddDirectory(DirectoryModel directoryModel)
+        public ArchiveModel AddArchive(ArchiveModel archiveModel)
         {
-            Directory.CreateDirectory($"{currDirectory}\\{directoryModel.Name}");
-            return directoryModel;
+            if(archiveModel.ArchiveType == ArchiveModel._ArchiveType.Folder)
+            {
+               Directory.CreateDirectory($@"{currDirectory}\{archiveModel.Name}");
+               return archiveModel;
+            }
+            else if (archiveModel.ArchiveType == ArchiveModel._ArchiveType.File)
+            {
+                File.Create($@"{currDirectory}\{archiveModel.Name}.txt");
+               return archiveModel;
+            }
+            else
+            {
+                return archiveModel;
+            }
         }
 
         public string[] GetDirectories()

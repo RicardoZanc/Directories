@@ -7,20 +7,14 @@ namespace WebApplication1.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class DirectoryController : ControllerBase
+    public class ArchiveController : ControllerBase
     {
-        private readonly DirectoryRepository directoryRepository;
-        private readonly ILogger<DirectoryController> logger;
-
-        public DirectoryController(ILogger<DirectoryController> logger) {
-            this.logger = logger;
-            directoryRepository = new DirectoryRepository();
-        }
+        private readonly ArchiveRepository archiveRepository;
 
         [HttpGet]
         public ActionResult<string[]> Get()
         {
-            string[] directories = directoryRepository.GetDirectories(); 
+            string[] directories = ; 
             return Ok(directories);
         }
 
